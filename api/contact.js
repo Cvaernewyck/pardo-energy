@@ -1,6 +1,6 @@
 import formidable from "formidable";
 import nodemailer from "nodemailer";
-import clientPromise from "../src/lib/mongodb";
+import clientPromise from "@/lib/mongodb";
 
 // Disable default body parsing
 export const config = {

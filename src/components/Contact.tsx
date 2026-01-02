@@ -27,12 +27,15 @@ const Contact = () => {
       label: "E-mail",
       value: "roger@pmenergygroup.be",
     },
+  ];
+
+  /*
+  ,
     {
       icon: Clock,
       label: "Openingsuren",
       value: "7/7",
-    },
-  ];
+    },*/
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

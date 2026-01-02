@@ -15,7 +15,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: "Adres",
-      value: "Industrielaan 42, 2000 Antwerpen",
+      value: "Kerkhage 28, 8210 Zedelgem",
     },
     {
       icon: Phone,
@@ -25,28 +25,45 @@ const Contact = () => {
     {
       icon: Mail,
       label: "E-mail",
-      value: "info@energiepro.be",
+      value: "roger@pmenergygroup.be",
     },
     {
       icon: Clock,
       label: "Openingsuren",
-      value: "Ma-Vr: 8:30 - 17:30",
+      value: "24/7",
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("http://localhost:5000/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error();
+
       toast({
         title: "Bericht verzonden!",
         description: "Wij nemen zo snel mogelijk contact met u op.",
       });
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+
+      form.reset();
+    } catch {
+      toast({
+        title: "Fout",
+        description: "Bericht kon niet worden verzonden.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

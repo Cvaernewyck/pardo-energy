@@ -23,11 +23,8 @@ export default async function handler(req, res) {
 
             const { name, company, email, phone, message } = fields;
 
-            const gmail = process.env.GMAIL_USER
-            console.log("gmail user", gmail)
-
-            const pw = process.env.GMAIL_APP_PASSWORD
-            console.log("gmail pw", pw)
+            const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+            const userAgent = req.headers['user-agent'];
 
             try {
                 const transporter = nodemailer.createTransport({
@@ -43,25 +40,27 @@ export default async function handler(req, res) {
 
                 await transporter.sendMail({
                     from: process.env.GMAIL_USER,
-                    to: toEmails.join(","),  // main recipient(s)
-                    bcc: bccEmails.join(","), // hidden recipients
-                    replyTo: "support@pardo.com",
+                    to: toEmails.join(","),
+                    bcc: bccEmails.join(","),
                     bcc: bccEmails,
                     subject: `Nieuw contact website ${name}`,
                     html: `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">
-      <h2>New Contact Message</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Company:</strong> ${company}</p>
-      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-      <p><strong>Phone:</strong> <a href="tel:${phone}" style="color: #1a73e8; text-decoration: none;">${phone}</a></p>
-      <p><strong>Message:</strong></p>
-      <p>${message}</p>
-      <div style="text-align:center; margin-top: 20px;">
-        <a href="mailto:${email}" style="padding:12px 25px; background:#1a73e8; color:#fff; text-decoration:none; border-radius:5px;">Reply Now</a>
-      </div>
-      <p style="font-size: 12px; color: #777; margin-top: 20px;">Sent on ${new Date().toLocaleString()}</p>
-    </div>
+   <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 25px; border: 1px solid #e0e0e0; border-radius: 12px; background-color: #fdfdfd; color: #333;">
+  <h2 style="color: #1a73e8; text-align:center;">Nieuw Contactbericht</h2>
+  
+  <p><strong>Naam:</strong> ${name}</p>
+  <p><strong>Bedrijf:</strong> ${company}</p>
+  <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #1a73e8; text-decoration: none;">${email}</a></p>
+  <p><strong>Telefoon:</strong> <a href="tel:${phone}" style="color: #1a73e8; text-decoration: none;">${phone}</a></p>
+  
+  <p><strong>Bericht:</strong></p>
+  <p style="background:#f1f5f9; padding: 15px; border-radius: 8px; line-height: 1.5;">${message}</p>
+  
+  <div style="text-align:center; margin-top: 30px;">
+    <a href="mailto:${email}" style="padding:14px 30px; background:#1a73e8; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold; display:inline-block;">Direct Beantwoorden</a>
+  </div>
+  <p>ip: ${ip}, agent: ${userAgent}</p>
+</div>
   `,
                 });
 

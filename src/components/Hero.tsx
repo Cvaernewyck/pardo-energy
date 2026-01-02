@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-energy.jpg";
+import { Button } from "../components/ui/button";
+import heroImage from "../assets/hero-energy.jpg";
 
 const Hero = () => {
   const benefits = [

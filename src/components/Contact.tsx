@@ -30,7 +30,7 @@ const Contact = () => {
     {
       icon: Clock,
       label: "Openingsuren",
-      value: "24/7",
+      value: "7/7",
     },
   ];
 

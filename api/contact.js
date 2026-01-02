@@ -9,6 +9,11 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+
+    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("GMAIL_USER:", process.env.GMAIL_USER ? "exists" : "undefined");
+    console.log("GMAIL_APP_PASSWORD:", process.env.GMAIL_APP_PASSWORD ? "exists" : "undefined");
+
     if (req.method === "POST") {
         const form = formidable({ multiples: false });
 

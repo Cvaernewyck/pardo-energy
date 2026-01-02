@@ -1,23 +1,22 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
+import tailwindAnimate from "tailwindcss-animate";
 
-export default {
-  darkMode: ["class"],
+const config: Config = {
   content: [
+    "./index.html",
+    "./src/**/*.{ts,tsx,js,jsx}",
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
   ],
-  prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
+      container: {
+        center: true,
+        padding: "2rem",
+        screens: { "2xl": "1400px" },
+      },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         display: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
@@ -89,10 +88,7 @@ export default {
           from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        "fade-in": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
+        "fade-in": { from: { opacity: "0" }, to: { opacity: "1" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -102,5 +98,7 @@ export default {
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [typography, tailwindAnimate],
+};
+
+export default config;

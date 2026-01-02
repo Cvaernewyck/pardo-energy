@@ -13,7 +13,9 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
                 <Zap className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-display font-bold text-xl">EnergiePro</span>
+              <span className="font-display font-bold text-xl">
+                P&M Energy Group
+              </span>
             </a>
             <p className="text-background/70 leading-relaxed max-w-sm">
               Uw partner voor professioneel energie-advies. Wij helpen KMO's en
@@ -107,7 +109,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/60 text-sm">
-            © {currentYear} EnergiePro. Alle rechten voorbehouden.
+            © {currentYear} P&M Energy Group. Alle rechten voorbehouden.
           </p>
           <div className="flex gap-6">
             <a

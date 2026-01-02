@@ -75,7 +75,7 @@ const WhyUs = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-              Waarom EnergiePro
+              Waarom P&M Energy Group
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-6">
               Uw vertrouwde partner in{" "}

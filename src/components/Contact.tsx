@@ -42,7 +42,7 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("http://localhost:5000/contact", {
+      const res = await fetch("http://localhost:5176/api/contact", {
         method: "POST",
         body: formData,
       });

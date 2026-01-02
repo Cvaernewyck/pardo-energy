@@ -1,5 +1,6 @@
 import formidable from "formidable";
 import nodemailer from "nodemailer";
+import clientPromise from "../src/lib/mongodb";
 
 // Disable default body parsing
 export const config = {
@@ -19,12 +20,33 @@ export default async function handler(req, res) {
                 return res.status(500).json({ error: "Form parse error" });
             }
 
+            const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+            const userAgent = req.headers['user-agent'];
+
+            const client = await clientPromise;
+            const db = client.db("contactDB");
+
+            // 🚫 Check banned IP
+            const banned = await db.collection("banned_ips").findOne({ ip });
+            if (banned) {
+                return res.status(403).json({ error: "Blocked" });
+            }
+
             console.log("Form fields:", fields);
 
             const { name, company, email, phone, message } = fields;
 
-            const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-            const userAgent = req.headers['user-agent'];
+            // ✅ Store prospect
+            await db.collection("prospects").insertOne({
+                name,
+                company,
+                email,
+                phone,
+                message,
+                ip,
+                userAgent,
+                createdAt: new Date(),
+            });
 
             try {
                 const transporter = nodemailer.createTransport({

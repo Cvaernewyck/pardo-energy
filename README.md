@@ -56,3 +56,5 @@ Pardo Energy’s website showcases the company’s energy solutions and provides
 - **Deployment:** Vercel
 
 ---
+
+@Author Cedric Vaernewyck

@@ -10,10 +10,6 @@ export const config = {
 
 export default async function handler(req, res) {
 
-    console.log("NODE_ENV:", process.env.NODE_ENV);
-    console.log("GMAIL_USER:", process.env.GMAIL_USER ? "exists" : "undefined");
-    console.log("GMAIL_APP_PASSWORD:", process.env.GMAIL_APP_PASSWORD ? "exists" : "undefined");
-
     if (req.method === "POST") {
         const form = formidable({ multiples: false });
 
@@ -42,17 +38,31 @@ export default async function handler(req, res) {
                     },
                 });
 
+                const toEmails = process.env.GMAIL_USER_TO ? process.env.GMAIL_USER_TO.split(",") : [];
+                const bccEmails = process.env.GMAIL_USER_BCC ? process.env.GMAIL_USER_BCC.split(",") : [];
+
                 await transporter.sendMail({
                     from: process.env.GMAIL_USER,
-                    to: process.env.GMAIL_USER,
-                    subject: `New contact message from ${name}`,
-                    text: `
-Name: ${name}
-Company: ${company}
-Email: ${email}
-Phone: ${phone}
-Message: ${message}
-          `,
+                    to: toEmails.join(","),  // main recipient(s)
+                    bcc: bccEmails.join(","), // hidden recipients
+                    replyTo: "support@pardo.com",
+                    bcc: bccEmails,
+                    subject: `Nieuw contact website ${name}`,
+                    html: `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">
+      <h2>New Contact Message</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Company:</strong> ${company}</p>
+      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+      <p><strong>Phone:</strong> <a href="tel:${phone}" style="color: #1a73e8; text-decoration: none;">${phone}</a></p>
+      <p><strong>Message:</strong></p>
+      <p>${message}</p>
+      <div style="text-align:center; margin-top: 20px;">
+        <a href="mailto:${email}" style="padding:12px 25px; background:#1a73e8; color:#fff; text-decoration:none; border-radius:5px;">Reply Now</a>
+      </div>
+      <p style="font-size: 12px; color: #777; margin-top: 20px;">Sent on ${new Date().toLocaleString()}</p>
+    </div>
+  `,
                 });
 
                 res.status(200).json({ message: "Message sent successfully!" });

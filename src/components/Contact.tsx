@@ -42,7 +42,7 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("http://localhost:5176/api/contact", {
+      const res = await fetch("https://pardo-energy.vercel.app/api/contact", {
         method: "POST",
         body: formData,
       });

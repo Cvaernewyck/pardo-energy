@@ -65,7 +65,7 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div>
+          {/* <div>
             <h4 className="font-display font-semibold text-lg mb-4">
               Diensten
             </h4>
@@ -103,7 +103,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}

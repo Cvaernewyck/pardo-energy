@@ -12,11 +12,11 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const contactInfo = [
-    {
+    /*{
       icon: MapPin,
       label: "Adres",
       value: "Kerkhage 28, 8210 Zedelgem",
-    },
+    },*/
     {
       icon: Phone,
       label: "Telefoon",

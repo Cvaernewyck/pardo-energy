@@ -20,7 +20,7 @@ const Contact = () => {
     {
       icon: Phone,
       label: "Telefoon",
-      value: "+32 3 123 45 67",
+      value: "+32 477 44 22 72",
     },
     {
       icon: Mail,

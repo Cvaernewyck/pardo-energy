@@ -22,8 +22,8 @@ const About = () => {
               Gedreven door duurzaamheid en resultaat
             </h2>
             <p className="text-primary-foreground/80 text-lg leading-relaxed mb-6">
-              EnergiePro werd opgericht met één doel: Belgische bedrijven helpen
-              om slimmer met energie om te gaan. Wat begon als een klein
+              P&M Energy Group werd opgericht met één doel: Belgische bedrijven
+              helpen om slimmer met energie om te gaan. Wat begon als een klein
               adviesbureau is uitgegroeid tot een toonaangevend
               consultancybedrijf met een team van gecertificeerde
               energie-experts.

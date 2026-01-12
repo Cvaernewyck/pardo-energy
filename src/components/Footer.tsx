@@ -7,7 +7,6 @@ const Footer = () => {
     <footer className="bg-foreground text-background section-padding">
       <div className="container-max">
         <div className="grid md:grid-cols-4 gap-8 lg:gap-12 mb-12">
-          {/* Logo & Description */}
           <div className="md:col-span-3">
             <a href="#" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
@@ -23,7 +22,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">
               Snelle Links
@@ -63,67 +61,36 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          {/* Services */}
-          {/* <div>
-            <h4 className="font-display font-semibold text-lg mb-4">
-              Diensten
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#diensten"
-                  className="text-background/70 hover:text-background transition-colors"
-                >
-                  Energie-audit
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#diensten"
-                  className="text-background/70 hover:text-background transition-colors"
-                >
-                  Kostenoptimalisatie
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#diensten"
-                  className="text-background/70 hover:text-background transition-colors"
-                >
-                  Duurzame Oplossingen
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#diensten"
-                  className="text-background/70 hover:text-background transition-colors"
-                >
-                  Industrie Consultancy
-                </a>
-              </li>
-            </ul>
-          </div> */}
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/60 text-sm">
             © {currentYear} P&M Energy Group. Alle rechten voorbehouden.
           </p>
-          <div className="flex gap-6">
-            <a
-              href="#"
-              className="text-background/60 hover:text-background transition-colors text-sm"
-            >
-              Privacybeleid
-            </a>
-            <a
-              href="#"
-              className="text-background/60 hover:text-background transition-colors text-sm"
-            >
-              Algemene Voorwaarden
-            </a>
+          <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-center">
+            <div className="flex gap-6">
+              <a
+                href="#"
+                className="text-background/60 hover:text-background transition-colors text-sm"
+              >
+                Privacybeleid
+              </a>
+              <a
+                href="#"
+                className="text-background/60 hover:text-background transition-colors text-sm"
+              >
+                Algemene Voorwaarden
+              </a>
+            </div>
+            <p className="text-background/60 text-sm">
+              Website gemaakt door{" "}
+              <a
+                href="https://www.cedricvaernewyck.be"
+                className="hover:text-background underline"
+              >
+                Cedric
+              </a>
+            </p>
           </div>
         </div>
       </div>

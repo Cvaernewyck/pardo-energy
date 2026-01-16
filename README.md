@@ -1,6 +1,6 @@
 # Pardo Energy Website
 
-This repository contains the **React-based landing page and contact page** for Pardo Energy, featuring a responsive design and an SMTP-powered contact form.
+This repository contains the **React-based landing page and contact page** for Pardo Energy, featuring a responsive design and an SMTP-powered contact form..
 
 ---
 
